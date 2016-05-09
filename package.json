@@ -1,6 +1,6 @@
 {
   "name": "@atis/input-moment",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "React datetime picker powered by momentjs",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,19 @@
     "deploy": "npm run build && github-pages-deploy",
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm dist/* && rm example/bundle*"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015",
+            "react"
+          ]
+        }
+      ]
+    ]
   },
   "github-pages-deploy": {
     "src": "example"
