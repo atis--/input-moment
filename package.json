@@ -54,7 +54,7 @@
     "blacklist": "^1.1.2",
     "classnames": "^2.2.0",
     "lodash": "^3.10.1",
-    "react-input-slider": "^1.5.0"
+    "@atis/react-input-slider": "^1.5.0"
   },
   "directories": {
     "example": "example"
