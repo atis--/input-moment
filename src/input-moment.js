@@ -1,3 +1,5 @@
+'use strict';
+
 var cx = require('classnames');
 var moment = require('moment');
 var React = require('react');
@@ -7,64 +9,69 @@ var Time = require('./time');
 module.exports = React.createClass({
   displayName: 'InputMoment',
 
-  getInitialState() {
+  getInitialState: function getInitialState() {
     return {
       tab: 0
     };
   },
-
-  getDefaultProps() {
+  getDefaultProps: function getDefaultProps() {
     return {
       prevMonthIcon: 'ion-ios-arrow-left',
       nextMonthIcon: 'ion-ios-arrow-right'
     };
   },
-
-  render() {
+  render: function render() {
     var tab = this.state.tab;
     var m = this.props.moment;
 
-    return (
-      <div className="m-input-moment">
-        <div className="options">
-          <button type="button" className={cx('ion-calendar im-btn', {'is-active': tab === 0})} onClick={this.handleClickTab.bind(null, 0)}>
-            Date
-          </button>
-          <button type="button" className={cx('ion-clock im-btn', {'is-active': tab === 1})} onClick={this.handleClickTab.bind(null, 1)}>
-            Time
-          </button>
-        </div>
-
-        <div className="tabs">
-          <Calendar
-            className={cx('tab', {'is-active': tab === 0})}
-            moment={m}
-            onChange={this.props.onChange}
-            prevMonthIcon={this.props.prevMonthIcon}
-            nextMonthIcon={this.props.nextMonthIcon}
-          />
-          <Time
-            className={cx('tab', {'is-active': tab === 1})}
-            moment={m}
-            onChange={this.props.onChange}
-          />
-        </div>
-
-        <button type="button" className="im-btn btn-save"
-          onClick={this.handleSave}>
-          <i className="fa fa-check" style={{ verticalAlign: '-2px' }}></i> OK
-        </button>
-      </div>
+    return React.createElement(
+      'div',
+      { className: 'm-input-moment' },
+      React.createElement(
+        'div',
+        { className: 'options' },
+        React.createElement(
+          'button',
+          { type: 'button', className: cx('ion-calendar im-btn', { 'is-active': tab === 0 }), onClick: this.handleClickTab.bind(null, 0) },
+          'Date'
+        ),
+        React.createElement(
+          'button',
+          { type: 'button', className: cx('ion-clock im-btn', { 'is-active': tab === 1 }), onClick: this.handleClickTab.bind(null, 1) },
+          'Time'
+        )
+      ),
+      React.createElement(
+        'div',
+        { className: 'tabs' },
+        React.createElement(Calendar, {
+          className: cx('tab', { 'is-active': tab === 0 }),
+          moment: m,
+          onChange: this.props.onChange,
+          prevMonthIcon: this.props.prevMonthIcon,
+          nextMonthIcon: this.props.nextMonthIcon
+        }),
+        React.createElement(Time, {
+          className: cx('tab', { 'is-active': tab === 1 }),
+          moment: m,
+          onChange: this.props.onChange
+        })
+      ),
+      React.createElement(
+        'button',
+        { type: 'button', className: 'im-btn btn-save',
+          onClick: this.handleSave },
+        React.createElement('i', { className: 'fa fa-check', style: { verticalAlign: '-2px' } }),
+        ' OK'
+      )
     );
   },
-
-  handleClickTab(tab, e) {
+  handleClickTab: function handleClickTab(tab, e) {
     e.preventDefault();
-    this.setState({tab: tab});
+    this.setState({ tab: tab });
   },
-
-  handleSave(e) {
+  handleSave: function handleSave(e) {
     e.preventDefault();
-    if(this.props.onSave) this.props.onSave();
+    if (this.props.onSave) this.props.onSave();
   }
 });
