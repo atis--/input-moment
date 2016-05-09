@@ -1,6 +1,6 @@
 var cx = require('classnames');
 var React = require('react');
-var InputSlider = require('react-input-slider');
+var InputSlider = require('@atis/react-input-slider');
 
 module.exports = React.createClass({
   displayName: 'Time',
