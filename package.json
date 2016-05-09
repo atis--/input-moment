@@ -1,5 +1,5 @@
 {
-  "name": "input-moment",
+  "name": "@atis/input-moment",
   "version": "0.0.7",
   "description": "React datetime picker powered by momentjs",
   "main": "index.js",
