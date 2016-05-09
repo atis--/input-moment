@@ -1,8 +1,8 @@
 {
   "name": "@atis/input-moment",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React datetime picker powered by momentjs",
-  "main": "index.js",
+  "main": "dist/input-moment.js",
   "scripts": {
     "start": "node_modules/.bin/webpack-dev-server -c --port=8888",
     "build-js": "node_modules/.bin/webpack -p",
